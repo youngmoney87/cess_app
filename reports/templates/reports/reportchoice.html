@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Report Choice</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'reports/style.css' %}">
+</head>
+<body>
+    <div style="background:transparent !important" class="jumbotron">
+        <div class="container">
+            <h1>Please choose a report to create</h1>
+            <ul>
+                {% for report, clean_name in choices.items %}
+                <li><a href="#">{{ clean_name|safe }}</a></li>
+                {% endfor %}
+            </ul>
+            <button class="btn btn-primary" type="button" name="button">Login</button>
+        </div>
+    </div>
+    <div class="bg"></div>
+</body>
+</html>

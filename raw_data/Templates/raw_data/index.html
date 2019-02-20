@@ -1,0 +1,72 @@
+{% block content %}
+<div class="card-columns">
+  {% for category, item in data.items %}
+    <div class="card mb-3">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <button class="btn btn-outline-{{item.color}} btn-block" data-toggle="collapse" data-target="#collapse{{category}}" aria-expanded="true" aria-controls="collapseOne">
+            <i class="fa fa-{{item.icon}}"></i>
+            {{item|safe}}
+            <span class="badge badge-{{item.color}}">{{item.completed}}/{{item.ttl}}</span>
+          </button>
+        </h5>
+      </div>
+      <div id="collapse{{category}}" class="collapse">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Last Run</td>
+              <td>Last Count</td>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in item.data %}
+            <tr>
+              <td>
+                {% if row %}
+                  <i class="fa fa-check-square fa-1x"></i>
+                  <a href="/queries/{{row.name}}"> {{row.name}}</a>
+                {% else %}
+                  <i class="fa fa-square-o fa-1x"></i>
+                   {{row}}
+                {% endif %}
+              </td>
+              <td>
+                {{row}}
+              </td>
+              <td>
+                {% if row %}
+                  {% if row %}
+                    <span class="badge badge-success">
+                      <i class="fa fa-thumbs-up fa-3x"></i>
+                    </span>
+                  {% else %}
+                    <span class="badge badge-danger">
+                      <i class="fa fa-thumbs-down fa-3x"></i>
+                    </span>
+                  {% endif %}
+                {% else %}
+                {{row}}
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        </div>
+    </div>
+  {% endfor %}
+</div>
+<hr />
+<div class="row">
+  <div class="col-lg-12">
+    <div class="pb-2 mb-3 border-bottom">
+      <h2 class="h2">Query Progress</h2>
+      <div class="progress" style="height: 50px;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{progress}}%;" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"><h4>{{progress}}%</h4></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

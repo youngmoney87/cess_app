@@ -1,0 +1,35 @@
+body, html {
+    background: #002d5c;
+    color: #c3d600;
+    height: 100%;
+    margin: 0;
+  }
+  
+  .bg {
+    /* The image used */
+    background-image: url("images/analytics-app.gif");
+  
+    /* Full height */
+    height: 100%; 
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  a {
+    color: white;
+  }
+
+.floatLeft {
+    width: 50%; float: left;
+
+}
+.floatRight {
+    width: 50%; float: right;
+}
+
+.container {
+    overflow: hidden;
+}

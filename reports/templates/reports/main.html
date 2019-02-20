@@ -1,0 +1,70 @@
+{% load custom_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>        
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'reports/main_style.css' %}">
+</head>
+<body>
+    <div class="floatLeft">
+            <table id="tablePreview" class="table table-hover table-sm table-striped">
+                <thead style="background-color: #002d5c; color: #c3d600; text-align: center">
+                    <tr>
+                        <th colspan="7">Importance</th>
+                    <tr>
+                    <th>Mean</th>
+                    <th>Standard Deviation</th>
+                    <th>Valid Respondents</th>
+                </tr>
+                </thead>
+                <tbody style="text-align: right">
+                    {% for row in frame %}
+                    <tr>
+                        {% for h in fields %}
+                        <td>{{ row|get_item:h }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="floatRight">
+            <table id="tablePreview" class="table table-hover table-sm table-striped table-bordered">
+                <thead style="background-color: #002d5c; color: #c3d600; text-align: center">
+                <tr>
+                    <th colspan="7">Satisfaction</th>
+                <tr>
+                    <th>Mean</th>
+                    <th>Standard Deviation</th>
+                    <th>Valid Respondents</th>
+                </tr>
+                </thead>
+                <tbody style="text-align: right">
+                    <tr>
+                        <td>4.57</td>
+                        <td>.78</td>
+                        <td>56</td>
+                    </tr>
+                    <tr>
+                        <td>4.52</td>
+                        <td>.81</td>
+                        <td>56</td>
+                    </tr>
+                    <tr>
+                        <td>4.52</td>
+                        <td>.71</td>
+                        <td>56</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>   
+</body>
+</html>
+
